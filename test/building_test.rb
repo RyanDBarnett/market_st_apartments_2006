@@ -42,7 +42,7 @@ class BuildingTest < Minitest::Test
     assert_equal [renter], @building.renters
   end
 
-  def test_occupied_units
+  def test_rented_units
     renter1 = Renter.new("Ryan")
     renter2 = Renter.new("Bob")
     apartment_data1 = {number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1}

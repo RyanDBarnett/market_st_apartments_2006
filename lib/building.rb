@@ -16,7 +16,7 @@ class Building
     occupied_units.reduce(0) { |sum, unit| sum += unit.monthly_rent } / occupied_units.length
   end
 
-  def occupied_units
+  def rented_units
     @units.select { |unit| unit.renter }
   end
 end
