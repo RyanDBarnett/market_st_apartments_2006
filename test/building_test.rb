@@ -29,10 +29,16 @@ class BuildingTest < Minitest::Test
     assert_equal [unit], @building.units
   end
 
-  def test_can_add_renter
+  def test_renters_updates_when_renter_added_to_unit
     renter = Renter.new("Ryan")
+    apartment_data = {number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1}
+    unit = Apartment.new(apartment_data)
+    @building.add_unit(unit)
 
-    @building.add_renter(renter)
+    assert_equal [], @building.renters
+
+    unit.add_renter(renter)
+    
     assert_equal [renter], @building.renters
   end
 
