@@ -50,4 +50,24 @@ class ApartmentTest < Minitest::Test
   def test_it_has_renter_that_defaults_to_nil
     assert_nil @unit1.renter
   end
+
+  def test_it_can_add_a_renter
+    renter = Renter.new("Ryan")
+
+    @unit1.add_renter(renter)
+
+    assert_instance_of Renter, @unit1.renter
+    assert_equal renter, @unit1.renter
+    assert_equal "Ryan", @unit1.renter.name
+  end
+
+  def test_it_can_add_a_different_renter
+    renter = Renter.new("Steve")
+
+    @unit1.add_renter(renter)
+
+    assert_instance_of Renter, @unit1.renter
+    assert_equal renter, @unit1.renter
+    assert_equal "Steve", @unit1.renter.name
+  end
 end
