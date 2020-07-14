@@ -53,15 +53,15 @@ class BuildingTest < Minitest::Test
     @building.add_unit(unit1)
     @building.add_unit(unit2)
 
-    assert_equal [], @building.occupied_units
+    assert_equal [], @building.rented_units
 
     unit1.add_renter(renter1)
 
-    assert_equal [unit1], @building.occupied_units
+    assert_equal [unit1], @building.rented_units
 
     unit2.add_renter(renter2)
 
-    assert_equal [unit1, unit2], @building.occupied_units
+    assert_equal [unit1, unit2], @building.rented_units
   end
 
   def test_average_rent
@@ -84,5 +84,27 @@ class BuildingTest < Minitest::Test
     unit2.add_renter(renter2)
 
     assert_equal 1500, @building.average_rent
+  end
+
+  def test_renter_with_highest_rent
+    renter1 = Renter.new("Ryan")
+    renter2 = Renter.new("Bob")
+    apartment_data1 = {number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1}
+    unit1 = Apartment.new(apartment_data1)
+    apartment_data2 = {number: "A2", monthly_rent: 1800, bathrooms: 2, bedrooms: 2}
+    unit2 = Apartment.new(apartment_data2)
+
+    @building.add_unit(unit1)
+    @building.add_unit(unit2)
+
+    assert_nil @building.renter_with_highest_rent
+
+    unit1.add_renter(renter1)
+
+    assert_equal renter1, @building.renter_with_highest_rent
+
+    unit2.add_renter(renter2)
+
+    assert_equal renter2, @building.renter_with_highest_rent
   end
 end
