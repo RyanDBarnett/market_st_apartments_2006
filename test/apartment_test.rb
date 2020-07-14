@@ -46,4 +46,8 @@ class ApartmentTest < Minitest::Test
   def test_it_can_have_different_bedrooms
     assert_equal 2, @unit2.bedrooms
   end
+
+  def test_it_has_renter_that_defaults_to_nil
+    assert_nil @unit1.renter
+  end
 end
