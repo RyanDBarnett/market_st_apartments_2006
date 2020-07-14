@@ -30,4 +30,12 @@ class ApartmentTest < Minitest::Test
   def test_it_can_have_a_different_monthly_rent
     assert_equal 1800, @unit2.monthly_rent
   end
+
+  def test_it_has_bathrooms
+    assert_equal 1, @unit1.bathrooms
+  end
+
+  def test_it_can_have_different_bathrooms
+    assert_equal 2, @unit2.bathrooms
+  end
 end
