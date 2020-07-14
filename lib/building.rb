@@ -18,6 +18,12 @@ class Building
   end
 
   def average_rent
-    @units.reduce(0) { |sum, unit| sum += unit.monthly_rent } / @units.length
+    occupied_units.reduce(0) { |sum, unit| sum += unit.monthly_rent } / occupied_units.length
+  end
+
+  def occupied_units
+    @units.select do |unit|
+      unit.renter
+    end
   end
 end
