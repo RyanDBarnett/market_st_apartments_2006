@@ -28,12 +28,19 @@ class Building
     end
   end
 
-  def test_units_by_number_of_bedrooms
+  def units_by_number_of_bedrooms
     @units.reduce({}) do |result, unit|
       if (!result[unit.bedrooms])
         result[unit.bedrooms] = []
       end
       result[unit.bedrooms] << unit.number
+      result
+    end
+  end
+
+  def annual_breakdown
+    rented_units.reduce({}) do |result, unit|
+      result[unit.renter.name] = unit.monthly_rent * 12
       result
     end
   end
