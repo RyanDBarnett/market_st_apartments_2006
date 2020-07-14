@@ -27,4 +27,14 @@ class Building
       nil
     end
   end
+
+  def test_units_by_number_of_bedrooms
+    @units.reduce({}) do |result, unit|
+      if (!result[unit.bedrooms])
+        result[unit.bedrooms] = []
+      end
+      result[unit.bedrooms] << unit.number
+      result
+    end
+  end
 end
