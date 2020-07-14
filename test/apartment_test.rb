@@ -38,4 +38,12 @@ class ApartmentTest < Minitest::Test
   def test_it_can_have_different_bathrooms
     assert_equal 2, @unit2.bathrooms
   end
+
+  def test_it_has_bedrooms
+    assert_equal 1, @unit1.bedrooms
+  end
+
+  def test_it_can_have_different_bedrooms
+    assert_equal 2, @unit2.bedrooms
+  end
 end
