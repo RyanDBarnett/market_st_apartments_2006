@@ -9,12 +9,7 @@ class Building
   end
 
   def renters
-    @units.reduce([]) do |renters, unit|
-      if unit.renter
-        renters << unit.renter
-      end
-      renters
-    end
+    occupied_units.map { |unit| unit.renter }
   end
 
   def average_rent
@@ -22,8 +17,6 @@ class Building
   end
 
   def occupied_units
-    @units.select do |unit|
-      unit.renter
-    end
+    @units.select { |unit| unit.renter }
   end
 end
