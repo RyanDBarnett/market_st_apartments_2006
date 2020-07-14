@@ -17,6 +17,10 @@ class BuildingTest < Minitest::Test
     assert_equal [], @building.units
   end
 
+  def test_it_has_renters_that_defaults_to_empty_array
+    assert_equal [], @building.renters
+  end
+
   def test_can_add_unit
     apartment_data1 = {number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1}
     unit1 = Apartment.new(apartment_data1)
