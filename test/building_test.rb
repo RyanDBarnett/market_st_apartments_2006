@@ -35,4 +35,17 @@ class BuildingTest < Minitest::Test
     @building.add_renter(renter)
     assert_equal [renter], @building.renters
   end
+
+  def test_average_rent
+    apartment_data1 = {number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1}
+    unit1 = Apartment.new(apartment_data1)
+    apartment_data2 = {number: "A2", monthly_rent: 1800, bathrooms: 2, bedrooms: 2}
+    unit2 = Apartment.new(apartment_data2)
+    expected = (1200 + 1800) / 2
+
+    @building.add_unit(unit1)
+    @building.add_unit(unit2)
+
+    assert_equal expected, @building.average_rent
+  end
 end
