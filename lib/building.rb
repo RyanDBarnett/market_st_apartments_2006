@@ -12,4 +12,8 @@ class Building
   def add_renter renter
     @renters << renter
   end
+
+  def average_rent
+    @units.reduce(0) { |sum, unit| sum += unit.monthly_rent } / @units.length
+  end
 end
