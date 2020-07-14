@@ -22,4 +22,12 @@ class ApartmentTest < Minitest::Test
   def test_it_can_have_a_different_number
     assert_equal "A2", @unit2.number
   end
+
+  def test_it_has_a_monthly_rent
+    assert_equal 1200, @unit1.monthly_rent
+  end
+
+  def test_it_can_have_a_different_monthly_rent
+    assert_equal 1800, @unit2.monthly_rent
+  end
 end
